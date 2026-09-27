@@ -1,0 +1,3300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karma Marathon 2026 | μLearn PRC — Freshers' Exclusive</title>
+  <meta name="description" content="Karma Marathon by μLearn PRC. 12-day skill-building challenge for first-year students (16–27 August 2026). Mine your skills, earn your Karma!">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================================
+       CSS RESET & BRAND VARIABLES
+       μLearn PRC Brand System:
+       - Burnt Orange: #E8622C
+       - Cream: #F7EFE2 / #FFFDF8
+       - Solid Outline: #121212
+       - Accent Teal: #148882 / #0F766E
+       - Accent Gold / Tan: #F3B33D / #E5A93C
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-orange: #E8622C;
+      --bg-orange-dark: #D44E18;
+      --bg-orange-light: #F27844;
+      --cream: #F7EFE2;
+      --cream-light: #FFFDF8;
+      --cream-dark: #EADBC8;
+      --black: #121212;
+      --black-pure: #000000;
+      --teal: #148882;
+      --teal-light: #20B2AA;
+      --teal-dark: #0D5C58;
+      --gold: #F3B33D;
+      --gold-dark: #D89824;
+      --gold-light: #FDE047;
+      --red: #E11D48;
+      --gray-muted: #52525B;
+      
+      --border-thick: 3.5px solid var(--black);
+      --border-thin: 2px solid var(--black);
+      --shadow-sm: 3px 3px 0px var(--black);
+      --shadow-md: 5px 5px 0px var(--black);
+      --shadow-lg: 8px 8px 0px var(--black);
+      --shadow-hover: 2px 2px 0px var(--black);
+      
+      --font-display: 'Archivo Black', -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-orange);
+      color: var(--black);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Grid-paper texture overlay */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-image: 
+        linear-gradient(to right, rgba(18, 18, 18, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(18, 18, 18, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ============================================================
+       GAMING-STYLE LOADING SCREEN
+       ============================================================ */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      background-color: var(--cream);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    #loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-box {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 36px 32px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .loader-badge {
+      display: inline-block;
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+
+    .loader-coin-wrap {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 20px;
+      position: relative;
+      perspective: 800px;
+    }
+
+    .spinning-coin {
+      width: 100%;
+      height: 100%;
+      animation: coin3DSpin 1.6s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes coin3DSpin {
+      0% { transform: rotateY(0deg) scale(1); }
+      50% { transform: rotateY(180deg) scale(1.08); }
+      100% { transform: rotateY(360deg) scale(1); }
+    }
+
+    .loader-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--black);
+      letter-spacing: -0.5px;
+    }
+
+    .loader-status {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--bg-orange-dark);
+      font-weight: 700;
+      min-height: 24px;
+      margin-bottom: 20px;
+    }
+
+    .loader-bar-frame {
+      width: 100%;
+      height: 24px;
+      background: #E5D5C0;
+      border: var(--border-thin);
+      border-radius: 2px;
+      padding: 2px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--bg-orange),
+        var(--bg-orange) 10px,
+        var(--gold) 10px,
+        var(--gold) 20px
+      );
+      transition: width 0.15s ease-out;
+      border-right: 2px solid var(--black);
+    }
+
+    .loader-skip-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gray-muted);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+
+    .loader-skip-btn:hover {
+      color: var(--black);
+    }
+
+    /* ============================================================
+       STICKY NAVBAR & BRAND LOGO
+       ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--cream);
+      border-bottom: var(--border-thick);
+      box-shadow: 0 4px 0 var(--black);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Official μLearn PRC Brand Logo */
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      background: var(--black);
+      padding: 6px 14px 4px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 2px solid var(--black);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+    }
+
+    .logo-mulearn {
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .logo-mu {
+      color: var(--gold);
+      font-size: 1.55rem;
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      margin-right: 1px;
+    }
+
+    .logo-prc {
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-top: 3px;
+      opacity: 0.9;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding: 6px 4px;
+      transition: color 0.15s;
+    }
+
+    .nav-link:hover {
+      color: var(--bg-orange);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--black);
+      transition: width 0.2s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-nav {
+      background: var(--bg-orange);
+      color: var(--cream-light);
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border: var(--border-thin);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-nav:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-md);
+      background: var(--bg-orange-dark);
+    }
+
+    .btn-nav:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--black);
+    }
+
+    /* Mobile Hamburger */
+    .mobile-menu-btn {
+      display: none;
+      background: var(--cream-light);
+      border: var(--border-thin);
+      box-shadow: var(--shadow-sm);
+      padding: 8px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .hamburger-icon {
+      width: 22px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger-icon span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: var(--black);
+      transition: all 0.25s ease;
+    }
+
+    .mobile-menu-btn.open .hamburger-icon span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+    .mobile-menu-btn.open .hamburger-icon span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-btn.open .hamburger-icon span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    /* Mobile Nav Sheet */
+    .mobile-nav-sheet {
+      display: none;
+      position: fixed;
+      top: 65px;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 24px;
+      z-index: 99;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-sheet.open {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: var(--black);
+      padding: 10px 0;
+      border-bottom: 2px dashed rgba(18,18,18,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ============================================================
+       HERO SECTION & POSTER AESTHETICS
+       ============================================================ */
+    .hero-section {
+      position: relative;
+      padding: 64px 20px 80px;
+      max-width: 1240px;
+      margin: 0 auto;
+      z-index: 2;
+      overflow: visible;
+    }
+
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cream-light);
+      color: var(--black);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border: var(--border-thick);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-badge-pill .pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--red);
+      border-radius: 50%;
+      border: 1.5px solid var(--black);
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    .hero-title-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .hero-title-main {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--cream-light);
+      letter-spacing: -1px;
+      -webkit-text-stroke: 3.5px var(--black);
+      text-shadow: 
+        6px 6px 0px var(--black),
+        10px 10px 0px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title-accent {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+      font-weight: 700;
+      color: var(--cream-light);
+      margin-bottom: 16px;
+      text-shadow: 2px 2px 0px var(--black);
+      letter-spacing: -0.3px;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--cream);
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      font-weight: 500;
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .btn-chunky-primary {
+      background: var(--cream-light);
+      color: var(--black);
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      padding: 16px 32px;
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      border-radius: 4px;
+    }
+
+    .btn-chunky-primary:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 11px 11px 0px var(--black);
+      background: #FFFFFF;
+    }
+
+    .btn-chunky-primary:active {
+      transform: translate(3px, 3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-chunky-secondary {
+      background: var(--teal);
+      color: var(--cream-light);
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 16px 26px;
+      border: var(--border-thick);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border-radius: 4px;
+    }
+
+    .btn-chunky-secondary:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-lg);
+      background: var(--teal-light);
+      color: var(--black);
+    }
+
+    /* Hero Graphic Poster Badge */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .poster-circle-backdrop {
+      width: 380px;
+      height: 380px;
+      background: var(--cream);
+      border: var(--border-thick);
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .concentric-ring {
+      position: absolute;
+      inset: -16px;
+      border: 3px dashed var(--black);
+      border-radius: 50%;
+      animation: rotateRing 40s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotateRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hero-big-coin {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 12px;
+      filter: drop-shadow(4px 4px 0px var(--black));
+      animation: gentleFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(3deg); }
+    }
+
+    .poster-stamp-date {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      background: var(--black);
+      color: var(--cream);
+      padding: 6px 16px;
+      border-radius: 3px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .poster-stamp-sub {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--bg-orange-dark);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .floating-mini-coin {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      filter: drop-shadow(3px 3px 0 var(--black));
+      z-index: 4;
+      animation: miniCoinFloat 5s ease-in-out infinite;
+    }
+
+    .coin-pos-1 { top: 10px; right: -15px; animation-delay: 0.5s; }
+    .coin-pos-2 { bottom: 20px; left: -25px; animation-delay: 1.2s; }
+    .coin-pos-3 { top: -20px; left: 40px; animation-delay: 2s; width: 44px; height: 44px; }
+
+    @keyframes miniCoinFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(-6deg); }
+    }
+
+    /* ============================================================
+       SMART 3-PHASE COUNTDOWN COMPONENT
+       ============================================================ */
+    .countdown-widget {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 24px;
+      max-width: 600px;
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    .countdown-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .countdown-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .countdown-status-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border: var(--border-thin);
+      box-shadow: 2px 2px 0 var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 2px;
+    }
+
+    .status-pre {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .status-live {
+      background: #22C55E;
+      color: #FFFFFF;
+      animation: livePulse 1.2s infinite;
+    }
+    .status-post {
+      background: var(--gray-muted);
+      color: var(--cream);
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .countdown-heading {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .state-toggle-mini {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: var(--cream);
+      border: var(--border-thin);
+      padding: 3px 8px;
+      cursor: pointer;
+      color: var(--black);
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .state-toggle-mini:hover {
+      background: var(--gold-light);
+    }
+
+    .countdown-timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .timer-tile {
+      background: var(--cream);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-sm);
+      padding: 14px 6px;
+      text-align: center;
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .timer-tile::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(18,18,18,0.15);
+    }
+
+    .timer-number {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      line-height: 1;
+      color: var(--black);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .timer-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray-muted);
+      letter-spacing: 1px;
+    }
+
+    /* ============================================================
+       GENERAL SECTION STYLING & CONTAINERS
+       ============================================================ */
+    .section-wrap {
+      padding: 80px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-cream-bg {
+      background-color: var(--cream);
+      border-top: var(--border-thick);
+      border-bottom: var(--border-thick);
+    }
+
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: var(--black);
+      color: var(--cream);
+      padding: 4px 14px;
+      margin-bottom: 12px;
+      border-radius: 2px;
+    }
+
+    .section-header-tag.tag-orange {
+      background: var(--bg-orange);
+      color: var(--cream-light);
+      border: var(--border-thin);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--gray-muted);
+      max-width: 650px;
+      margin-bottom: 48px;
+    }
+
+    .section-cream-bg .section-subtitle {
+      color: #3F3F46;
+    }
+
+    /* ============================================================
+       ABOUT & STAT CARDS
+       ============================================================ */
+    .about-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .stat-card {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 32px 24px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 11px 11px 0px var(--black);
+    }
+
+    .stat-card-badge {
+      position: absolute;
+      top: -16px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      filter: drop-shadow(2px 2px 0 var(--black));
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--bg-orange);
+      -webkit-text-stroke: 1.5px var(--black);
+      margin-bottom: 10px;
+    }
+
+    .stat-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .stat-desc {
+      font-size: 0.95rem;
+      color: var(--gray-muted);
+      line-height: 1.5;
+    }
+
+    .about-banner-box {
+      margin-top: 48px;
+      background: var(--teal);
+      color: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 36px 40px;
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .about-banner-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .about-banner-text p {
+      font-size: 1.05rem;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       HOW IT WORKS (5-STEP WORKFLOW) & INTERACTIVE TRACK EXPLORER
+       ============================================================ */
+    .timeline-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      margin-bottom: 60px;
+    }
+
+    .step-card {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-md);
+      padding: 24px 28px;
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 24px;
+      transition: all 0.2s;
+    }
+
+    .step-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--black);
+    }
+
+    .step-coin-marker {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .step-num-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--cream);
+    }
+
+    .step-body h4 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .step-body p {
+      color: var(--gray-muted);
+      font-size: 0.98rem;
+    }
+
+    .step-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: var(--cream);
+      border: var(--border-thin);
+      padding: 6px 14px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    /* Track Preview Component */
+    .track-explorer {
+      background: var(--cream);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 32px;
+      border-radius: 4px;
+    }
+
+    .track-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .track-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .track-tab-btn {
+      background: var(--cream-light);
+      border: var(--border-thin);
+      box-shadow: 2px 2px 0 var(--black);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.15s;
+    }
+
+    .track-tab-btn.active {
+      background: var(--bg-orange);
+      color: var(--cream-light);
+      box-shadow: 3px 3px 0 var(--black);
+      transform: translateY(-2px);
+    }
+
+    .track-tasks-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .task-item {
+      background: var(--cream-light);
+      border: var(--border-thin);
+      box-shadow: var(--shadow-sm);
+      padding: 16px 20px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .task-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .karma-reward-pill {
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border: 1.5px solid var(--black);
+      border-radius: 20px;
+      box-shadow: 1px 1px 0 var(--black);
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       RULES & QUALIFICATION
+       ============================================================ */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 24px;
+    }
+
+    .rule-card {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 28px 24px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .rule-icon-box {
+      width: 48px;
+      height: 48px;
+      background: var(--black);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    .rule-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .rule-card p {
+      font-size: 0.95rem;
+      color: var(--gray-muted);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       PRIZES SECTION (POSTER CARDS)
+       ============================================================ */
+    .prizes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .prize-card {
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 40px 32px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .prize-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 12px 12px 0 var(--black);
+    }
+
+    .prize-card-student {
+      background: var(--teal);
+      color: var(--cream-light);
+    }
+
+    .prize-card-volunteer {
+      background: var(--bg-orange);
+      color: var(--cream-light);
+    }
+
+    .prize-top-badge {
+      display: inline-block;
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .prize-icon-wrap {
+      width: 90px;
+      height: 90px;
+      margin-bottom: 20px;
+      filter: drop-shadow(4px 4px 0 var(--black));
+    }
+
+    .prize-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .prize-desc {
+      font-size: 1rem;
+      margin-bottom: 24px;
+      opacity: 0.95;
+    }
+
+    .prize-perks-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .prize-perks-list li {
+      background: rgba(18, 18, 18, 0.2);
+      border: 1.5px solid var(--black);
+      padding: 10px 14px;
+      border-radius: 3px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .all-qualifiers-banner {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      padding: 28px 32px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .all-qualifiers-banner h4 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    /* ============================================================
+       REGISTRATION FORM (CHUNKY POSTER-CARD)
+       ============================================================ */
+    .register-section {
+      padding: 80px 20px 100px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-poster-card {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: 12px 12px 0px var(--black);
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 36px;
+      border-bottom: 3px dashed var(--black);
+      padding-bottom: 24px;
+    }
+
+    .form-badge {
+      display: inline-block;
+      background: var(--bg-orange);
+      color: var(--cream-light);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border: var(--border-thin);
+      box-shadow: 2px 2px 0 var(--black);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .form-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .form-header p {
+      font-size: 1rem;
+      color: var(--gray-muted);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-col-full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+
+    .form-label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-label .req {
+      color: var(--red);
+      font-weight: 800;
+    }
+
+    .form-input, .form-select {
+      background: var(--cream);
+      border: var(--border-thin);
+      box-shadow: 2px 2px 0 var(--black);
+      padding: 14px 16px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--black);
+      border-radius: 3px;
+      transition: all 0.15s ease;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-input:focus, .form-select:focus {
+      background: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+      border-color: var(--bg-orange);
+    }
+
+    .form-input.is-invalid, .form-select.is-invalid {
+      border-color: var(--red);
+      background-color: #FEF2F2;
+      box-shadow: 2px 2px 0 var(--red);
+    }
+
+    .field-error-msg {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--red);
+      font-weight: 700;
+      display: none;
+      margin-top: 2px;
+    }
+
+    .field-error-msg.visible {
+      display: block;
+    }
+
+    /* μLearn Member Toggle (Chunky Pill Buttons) */
+    .member-toggle-wrap {
+      background: var(--cream);
+      border: var(--border-thin);
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: var(--shadow-sm);
+      margin-top: 10px;
+    }
+
+    .member-toggle-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .pill-radio-label {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .pill-radio-label input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pill-radio-custom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 16px;
+      background: var(--cream-light);
+      border: var(--border-thin);
+      box-shadow: 2px 2px 0 var(--black);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: center;
+      border-radius: 40px;
+      transition: all 0.15s ease;
+    }
+
+    .pill-radio-label input[type="radio"]:checked + .pill-radio-custom {
+      background: var(--teal);
+      color: var(--cream-light);
+      box-shadow: 3px 3px 0 var(--black);
+      transform: translateY(-2px);
+    }
+
+    /* Conditional Expandable Panels */
+    .conditional-panel {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.3s ease, margin 0.3s ease;
+      margin-top: 0;
+    }
+
+    .conditional-panel.show {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 16px;
+    }
+
+    .note-join-mulearn {
+      background: #EFF6FF;
+      border: 2px dashed #3B82F6;
+      padding: 16px 20px;
+      border-radius: 4px;
+      font-size: 0.92rem;
+    }
+
+    .note-join-mulearn a {
+      color: #2563EB;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .checkbox-confirm-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .checkbox-confirm-wrap input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--bg-orange);
+      cursor: pointer;
+      margin-top: 2px;
+    }
+
+    /* Duplicate Registration Notice */
+    .duplicate-alert-banner {
+      display: none;
+      background: #FEF3C7;
+      border: var(--border-thin);
+      box-shadow: var(--shadow-sm);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .duplicate-alert-banner.show {
+      display: flex;
+    }
+
+    .btn-view-ticket {
+      background: var(--black);
+      color: var(--cream-light);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    /* Submit Button */
+    .btn-submit-form {
+      width: 100%;
+      background: var(--bg-orange);
+      color: var(--cream-light);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      padding: 20px;
+      border: var(--border-thick);
+      box-shadow: var(--shadow-lg);
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 16px;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-submit-form:hover {
+      background: var(--bg-orange-dark);
+      transform: translate(-3px, -3px);
+      box-shadow: 11px 11px 0 var(--black);
+    }
+
+    .btn-submit-form:active {
+      transform: translate(3px, 3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-submit-form:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    /* ============================================================
+       SUCCESS MODAL & DIGITAL TICKET (CONFIRMATION)
+       ============================================================ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: 14px 14px 0 var(--black);
+      max-width: 580px;
+      width: 100%;
+      padding: 40px 32px;
+      border-radius: 4px;
+      text-align: center;
+      position: relative;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.open .modal-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--cream);
+      border: var(--border-thin);
+      box-shadow: 2px 2px 0 var(--black);
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--red);
+      color: #FFFFFF;
+    }
+
+    /* 3D Coin Flip Animation */
+    .success-coin-wrapper {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px;
+      perspective: 1000px;
+    }
+
+    .success-flipping-coin {
+      width: 100%;
+      height: 100%;
+      animation: coinPopFlip 1.4s ease-out;
+      transform-style: preserve-3d;
+      filter: drop-shadow(4px 4px 0 var(--black));
+    }
+
+    @keyframes coinPopFlip {
+      0% { transform: scale(0.2) rotateY(0deg); opacity: 0; }
+      50% { transform: scale(1.15) rotateY(720deg); opacity: 1; }
+      100% { transform: scale(1) rotateY(1080deg); }
+    }
+
+    .modal-badge-karma {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      padding: 8px 24px;
+      border: var(--border-thick);
+      box-shadow: var(--shadow-sm);
+      border-radius: 40px;
+      margin-bottom: 16px;
+      animation: bounce 0.8s ease-out 1.2s both;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    /* Digital Admission Ticket */
+    .digital-ticket-box {
+      background: var(--cream);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-md);
+      border-radius: 4px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: left;
+      position: relative;
+    }
+
+    .ticket-dashed-cut {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      border-top: 2px dashed rgba(18,18,18,0.3);
+    }
+
+    .ticket-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .ticket-field {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--gray-muted);
+      text-transform: uppercase;
+    }
+
+    .ticket-val {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--black);
+    }
+
+    .ticket-id-large {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: var(--black);
+      color: var(--gold);
+      padding: 4px 10px;
+      display: inline-block;
+      border-radius: 2px;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-ticket-whatsapp {
+      background: #25D366;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px;
+      border: var(--border-thick);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .btn-ticket-whatsapp:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .btn-ticket-close {
+      background: var(--cream);
+      border: var(--border-thin);
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ============================================================
+       FAQ SECTION (RETRO ACCORDION)
+       ============================================================ */
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--cream-light);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-sm);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    .faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--black);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-trigger:hover {
+      background: var(--cream);
+    }
+
+    .faq-icon {
+      font-size: 1.5rem;
+      transition: transform 0.2s ease;
+      font-family: monospace;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out, padding 0.25s ease;
+      padding: 0 24px;
+      color: var(--gray-muted);
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    .faq-item.active .faq-content {
+      padding: 0 24px 20px;
+      max-height: 250px;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--black);
+      color: var(--cream);
+      border-top: var(--border-thick);
+      padding: 60px 20px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-desc {
+      color: #A1A1AA;
+      font-size: 0.95rem;
+      margin-top: 16px;
+      max-width: 360px;
+      line-height: 1.6;
+    }
+
+    .footer-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link {
+      color: #D4D4D8;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.15s;
+    }
+
+    .footer-link:hover {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid #27272A;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #71717A;
+    }
+
+    /* Back To Top Button */
+    .back-to-top-btn {
+      background: var(--bg-orange);
+      color: var(--cream-light);
+      border: 2px solid var(--cream);
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 2px;
+    }
+
+    .back-to-top-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ============================================================
+       RESPONSIVE BREAKPOINTS
+       ============================================================ */
+    @media (max-width: 992px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 48px;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-cta-group {
+        justify-content: center;
+      }
+      .countdown-widget {
+        margin: 20px auto 0;
+      }
+      .prizes-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-actions .btn-nav {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-poster-card {
+        padding: 32px 20px;
+      }
+      .step-card {
+        grid-template-columns: 60px 1fr;
+      }
+      .step-tag {
+        grid-column: 2 / -1;
+        justify-self: start;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      .about-banner-box {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Subtle Graph-Paper Grid Background Overlay -->
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ============================================================
+       0. GAMING-STYLE "KARMA MINING" LOADING SCREEN
+       ============================================================ -->
+  <div id="loading-screen" role="dialog" aria-modal="true" aria-label="Loading Karma Marathon">
+    <div class="loader-box">
+      <div class="loader-badge">⚡ μLearn PRC • Engine Boot</div>
+      
+      <div class="loader-coin-wrap">
+        <!-- High-fidelity SVG μ-Coin -->
+        <svg class="spinning-coin" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+          <circle cx="50" cy="50" r="38" stroke="#121212" stroke-width="2" stroke-dasharray="4 4"/>
+          <circle cx="50" cy="50" r="32" fill="#E5A93C" stroke="#121212" stroke-width="3"/>
+          <!-- Greek letter μ -->
+          <text x="50" y="62" font-family="'Times New Roman', serif" font-style="italic" font-weight="900" font-size="44" fill="#121212" text-anchor="middle">μ</text>
+        </svg>
+      </div>
+
+      <h2 class="loader-title">Karma Mining Rig</h2>
+      <div class="loader-status" id="loader-status-text">⛏️ Digging for freshers' talent...</div>
+
+      <div class="loader-bar-frame">
+        <div class="loader-bar-fill" id="loader-bar-fill"></div>
+      </div>
+
+      <button type="button" class="loader-skip-btn" id="loader-skip-btn">Skip loading (Launch directly →)</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       1. STICKY NAVBAR WITH μLearn PRC BRAND LOGO
+       ============================================================ -->
+  <header class="site-header">
+    <div class="nav-container">
+      <!-- μLearn PRC Official Wordmark Logo Badge -->
+      <a href="#hero" class="brand-logo" aria-label="μLearn PRC Karma Marathon Home">
+        <div class="logo-badge">
+          <span class="logo-mulearn"><span class="logo-mu">μ</span>learn</span>
+          <span class="logo-prc">PRC</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#rules" class="nav-link">Rules</a></li>
+          <li><a href="#prizes" class="nav-link">Prizes</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Desktop CTA & Mobile Toggle -->
+      <div class="nav-actions">
+        <a href="#register" class="btn-nav">Register Now ⚡</a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Sheet -->
+    <div class="mobile-nav-sheet" id="mobile-nav-sheet">
+      <ul class="mobile-nav-links">
+        <li><a href="#about" class="mobile-nav-link"><span>About Challenge</span> <span>→</span></a></li>
+        <li><a href="#how-it-works" class="mobile-nav-link"><span>How It Works</span> <span>→</span></a></li>
+        <li><a href="#rules" class="mobile-nav-link"><span>Rules & Eligibility</span> <span>→</span></a></li>
+        <li><a href="#prizes" class="mobile-nav-link"><span>Prizes & Perks</span> <span>→</span></a></li>
+        <li><a href="#faq" class="mobile-nav-link"><span>Freshers' FAQ</span> <span>→</span></a></li>
+        <li><a href="#register" class="btn-chunky-primary" style="width:100%; text-align:center; justify-content:center; margin-top:12px;">Register Squad 🚀</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         2. HERO SECTION WITH POSTER AESTHETICS & COUNTDOWN
+         ============================================================ -->
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        
+        <!-- Left: Poster Headline & CTAs -->
+        <div class="hero-content">
+          <div class="hero-badge-pill">
+            <span class="pulse-dot"></span>
+            <span>Freshers' Exclusive • 16–27 August 2026</span>
+          </div>
+
+          <div class="hero-title-wrap">
+            <h1 class="hero-title-main">
+              KARMA
+              <span class="hero-title-accent">MARATHON</span>
+            </h1>
+          </div>
+
+          <p class="hero-tagline">Mine Your Skills. Earn Your Karma.</p>
+          <p class="hero-desc">
+            A 12-day high-octane skill-building sprint designed exclusively for first-year students by <strong>μLearn PRC</strong>. Explore tech tracks, build genuine projects, unlock volunteer mentorship, and stack your Karma points!
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#register" class="btn-chunky-primary">
+              <span>Claim Your Spot</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#how-it-works" class="btn-chunky-secondary">
+              <span>Explore The Flow</span>
+              <span>↓</span>
+            </a>
+          </div>
+
+          <!-- Dynamic 3-Phase Event Countdown Widget -->
+          <div class="countdown-widget" id="countdown-widget">
+            <div class="countdown-header">
+              <div class="countdown-title-wrap">
+                <span class="countdown-status-indicator status-pre" id="countdown-status-badge">Phase: Pre-Event</span>
+                <span class="countdown-heading" id="countdown-heading-text">Marathon Starts In:</span>
+              </div>
+              <!-- Test preview switcher for demo/evaluation -->
+              <button type="button" class="state-toggle-mini" id="countdown-preview-toggle" title="Click to cycle and preview Pre-Event, Live, and Ended states">
+                <span>🔄 Test Phase View</span>
+              </button>
+            </div>
+
+            <div class="countdown-timer-grid">
+              <div class="timer-tile">
+                <span class="timer-number" id="time-days">00</span>
+                <span class="timer-label">Days</span>
+              </div>
+              <div class="timer-tile">
+                <span class="timer-number" id="time-hours">00</span>
+                <span class="timer-label">Hours</span>
+              </div>
+              <div class="timer-tile">
+                <span class="timer-number" id="time-minutes">00</span>
+                <span class="timer-label">Minutes</span>
+              </div>
+              <div class="timer-tile">
+                <span class="timer-number" id="time-seconds">00</span>
+                <span class="timer-label">Seconds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Retro Poster Centerpiece with μ-Coins -->
+        <div class="hero-visual">
+          <!-- Floating μ-Coins -->
+          <div class="floating-mini-coin coin-pos-1">
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+              <circle cx="50" cy="50" r="32" fill="#E5A93C" stroke="#121212" stroke-width="2"/>
+              <text x="50" y="64" font-family="'Times New Roman', serif" font-style="italic" font-weight="900" font-size="44" fill="#121212" text-anchor="middle">μ</text>
+            </svg>
+          </div>
+          <div class="floating-mini-coin coin-pos-2">
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" fill="#148882" stroke="#121212" stroke-width="6"/>
+              <circle cx="50" cy="50" r="32" fill="#20B2AA" stroke="#121212" stroke-width="2"/>
+              <text x="50" y="64" font-family="'Times New Roman', serif" font-style="italic" font-weight="900" font-size="44" fill="#FFFDF8" text-anchor="middle">μ</text>
+            </svg>
+          </div>
+          <div class="floating-mini-coin coin-pos-3">
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+              <text x="50" y="64" font-family="'Times New Roman', serif" font-style="italic" font-weight="900" font-size="44" fill="#121212" text-anchor="middle">μ</text>
+            </svg>
+          </div>
+
+          <!-- Circular Poster Graphic -->
+          <div class="poster-circle-backdrop">
+            <div class="concentric-ring"></div>
+            
+            <svg class="hero-big-coin" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="7"/>
+              <circle cx="50" cy="50" r="37" stroke="#121212" stroke-width="3" stroke-dasharray="5 5"/>
+              <circle cx="50" cy="30" fill="#E5A93C" stroke="#121212" stroke-width="3"/>
+              <text x="50" y="62" font-family="'Times New Roman', serif" font-style="italic" font-weight="900" font-size="44" fill="#121212" text-anchor="middle">μ</text>
+            </svg>
+
+            <span class="poster-stamp-date">16 – 27 AUGUST</span>
+            <span class="poster-stamp-sub">12-Day Mining Sprint</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. ABOUT SECTION & 4 STAT CARDS
+         ============================================================ -->
+    <section class="section-wrap section-cream-bg" id="about">
+      <div class="content-container">
+        <span class="section-header-tag">01 / The Challenge</span>
+        <h2 class="section-title">What is Karma Marathon?</h2>
+        <p class="section-subtitle">
+          An energetic on-ramp for freshers to break into coding, design, open source, and technology. Work in squads, complete real tasks on the μJourney platform, and accumulate Karma that proves your real-world capability.
+        </p>
+
+        <!-- 4 Distinct Stat Cards -->
+        <div class="about-cards-grid">
+          
+          <div class="stat-card">
+            <div class="stat-card-badge">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" text-anchor="middle">μ</text>
+              </svg>
+            </div>
+            <div class="stat-number">12</div>
+            <h3 class="stat-title">Days of Action</h3>
+            <p class="stat-desc">An intense daily sprint from 16th to 27th August packed with mini-quests and live mentor support.</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-badge">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="#148882" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" fill="#FFF" text-anchor="middle">μ</text>
+              </svg>
+            </div>
+            <div class="stat-number" style="color:var(--teal);">Squad</div>
+            <h3 class="stat-title">Group-Based</h3>
+            <p class="stat-desc">Learn together in cohorts of 5 peers led by an experienced senior μLearn volunteer mentor.</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-badge">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" text-anchor="middle">μ</text>
+              </svg>
+            </div>
+            <div class="stat-number">3000+</div>
+            <h3 class="stat-title">Karma to Qualify</h3>
+            <p class="stat-desc">The magic benchmark! Earn 3,000+ Karma to unlock official credentials, stickers, and swag.</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-badge">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="#E11D48" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" fill="#FFF" text-anchor="middle">μ</text>
+              </svg>
+            </div>
+            <div class="stat-number" style="color:var(--red);">1st Year</div>
+            <h3 class="stat-title">Freshers Only</h3>
+            <p class="stat-desc">Zero prior coding experience required. Tailored specifically for 1st-year students to start from scratch.</p>
+          </div>
+
+        </div>
+
+        <!-- Banner Feature -->
+        <div class="about-banner-box">
+          <div class="about-banner-text">
+            <h3>Proof of Work is Everything</h3>
+            <p>In μLearn, <strong>Karma</strong> represents verifiable peer-reviewed achievements. No dry classroom lectures—just practical tasks, hands-on building, and real portfolio growth.</p>
+          </div>
+          <a href="#register" class="btn-chunky-primary" style="background:var(--cream-light); white-space:nowrap;">Join Your Squad →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. HOW IT WORKS (STEP-BY-STEP FLOW) & TRACK EXPLORER
+         ============================================================ -->
+    <section class="section-wrap" id="how-it-works">
+      <div class="content-container">
+        <span class="section-header-tag tag-orange">02 / The Roadmap</span>
+        <h2 class="section-title" style="color:var(--cream-light); text-shadow: 3px 3px 0 var(--black);">How The Marathon Works</h2>
+        <p class="section-subtitle" style="color:var(--cream);">
+          Five straightforward steps from registration to claiming your verified credentials.
+        </p>
+
+        <!-- 5 Numbered Steps with Coin Badges -->
+        <div class="timeline-steps">
+          
+          <div class="step-card">
+            <div class="step-coin-marker">
+              <svg viewBox="0 0 100 100" width="64" height="64">
+                <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" text-anchor="middle">μ</text>
+              </svg>
+              <span class="step-num-badge">1</span>
+            </div>
+            <div class="step-body">
+              <h4>Join a Freshers' Group</h4>
+              <p>Sign up below with your college and branch. You'll be assigned into an active squad of 5 passionate peers.</p>
+            </div>
+            <span class="step-tag">Squad Matching</span>
+          </div>
+
+          <div class="step-card">
+            <div class="step-coin-marker">
+              <svg viewBox="0 0 100 100" width="64" height="64">
+                <circle cx="50" cy="50" r="46" fill="#148882" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" fill="#FFF" text-anchor="middle">μ</text>
+              </svg>
+              <span class="step-num-badge">2</span>
+            </div>
+            <div class="step-body">
+              <h4>Get Assigned a Volunteer Mentor</h4>
+              <p>Your squad will be guided by a senior μLearn volunteer mentor who answers doubts and conducts daily syncs.</p>
+            </div>
+            <span class="step-tag">1-on-1 Guidance</span>
+          </div>
+
+          <div class="step-card">
+            <div class="step-coin-marker">
+              <svg viewBox="0 0 100 100" width="64" height="64">
+                <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" text-anchor="middle">μ</text>
+              </svg>
+              <span class="step-num-badge">3</span>
+            </div>
+            <div class="step-body">
+              <h4>Pick Tasks from μJourney</h4>
+              <p>Explore curated beginner learning paths: Git, Python, Web Basics, Figma Design, or Generative AI.</p>
+            </div>
+            <span class="step-tag">Curated Quests</span>
+          </div>
+
+          <div class="step-card">
+            <div class="step-coin-marker">
+              <svg viewBox="0 0 100 100" width="64" height="64">
+                <circle cx="50" cy="50" r="46" fill="#E11D48" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" fill="#FFF" text-anchor="middle">μ</text>
+              </svg>
+              <span class="step-num-badge">4</span>
+            </div>
+            <div class="step-body">
+              <h4>Build Projects & Mine Karma</h4>
+              <p>Submit proof of work on Discord/μJourney. Peer reviewers grade your code and deposit real Karma points into your profile.</p>
+            </div>
+            <span class="step-tag">Proof of Work</span>
+          </div>
+
+          <div class="step-card">
+            <div class="step-coin-marker">
+              <svg viewBox="0 0 100 100" width="64" height="64">
+                <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+                <text x="50" y="64" font-family="serif" font-style="italic" font-weight="bold" font-size="44" text-anchor="middle">μ</text>
+              </svg>
+              <span class="step-num-badge">5</span>
+            </div>
+            <div class="step-body">
+              <h4>Reach 3,000+ Karma & Claim Rewards</h4>
+              <p>Hit the milestone, unlock verified credentials, get exclusive sticker packs, swag, and access to advanced project cohorts.</p>
+            </div>
+            <span class="step-tag">Rewards & Swag</span>
+          </div>
+
+        </div>
+
+        <!-- Interactive Track Explorer Component -->
+        <div class="track-explorer">
+          <div class="track-header">
+            <div>
+              <h3 style="font-family:var(--font-display); font-size:1.5rem; text-transform:uppercase;">Explore Track Quests</h3>
+              <p style="color:var(--gray-muted); font-size:0.92rem;">Click any track to inspect available beginner tasks and Karma point rewards!</p>
+            </div>
+            <div class="track-tabs" id="track-tabs-container">
+              <button type="button" class="track-tab-btn active" data-track="web">Web Basics</button>
+              <button type="button" class="track-tab-btn" data-track="python">Python & AI</button>
+              <button type="button" class="track-tab-btn" data-track="git">Git & GitHub</button>
+              <button type="button" class="track-tab-btn" data-track="design">UI/UX Design</button>
+              <button type="button" class="track-tab-btn" data-track="cyber">Linux & Cyber</button>
+            </div>
+          </div>
+
+          <div class="track-tasks-list" id="track-tasks-list">
+            <!-- Dynamic task items injected via JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. RULES & GUIDELINES
+         ============================================================ -->
+    <section class="section-wrap section-cream-bg" id="rules">
+      <div class="content-container">
+        <span class="section-header-tag">03 / Guidelines</span>
+        <h2 class="section-title">Rules & Qualification</h2>
+        <p class="section-subtitle">
+          Simple guidelines to keep the sprint fair, collaborative, and fun for all freshers.
+        </p>
+
+        <div class="rules-grid">
+          
+          <div class="rule-card">
+            <div class="rule-icon-box">🎓</div>
+            <h4>1st-Year Eligibility</h4>
+            <p>Exclusive to first-year students of any engineering, science, or degree college. No prior coding experience needed.</p>
+          </div>
+
+          <div class="rule-card">
+            <div class="rule-icon-box">🎯</div>
+            <h4>3,000 Karma Target</h4>
+            <p>Participants must accumulate at least 3,000 verifiable Karma points on μJourney between 16 and 27 August to qualify for swag.</p>
+          </div>
+
+          <div class="rule-card">
+            <div class="rule-icon-box">🤝</div>
+            <h4>Squad Collaboration</h4>
+            <p>Work closely with your assigned 5-peer squad. Teamwork and peer learning are key pillars of the μLearn philosophy.</p>
+          </div>
+
+          <div class="rule-card">
+            <div class="rule-icon-box">🛡️</div>
+            <h4>Genuine Proof of Work</h4>
+            <p>Zero tolerance for plagiarism. Submissions are peer-reviewed. Code must be your own or properly attributed.</p>
+          </div>
+
+          <div class="rule-card">
+            <div class="rule-icon-box">💬</div>
+            <h4>Daily Mentor Syncs</h4>
+            <p>Attend daily quick voice/text syncs on Discord with your assigned volunteer mentor to clear roadblocks.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. PRIZES & PERKS (POSTER CARDS)
+         ============================================================ -->
+    <section class="section-wrap" id="prizes">
+      <div class="content-container">
+        <span class="section-header-tag tag-orange">04 / Rewards</span>
+        <h2 class="section-title" style="color:var(--cream-light); text-shadow: 3px 3px 0 var(--black);">Prizes & Recognition</h2>
+        <p class="section-subtitle" style="color:var(--cream);">
+          Compete for top miner honors while every qualifier wins guaranteed credentials.
+        </p>
+
+        <div class="prizes-grid">
+          
+          <!-- Top Freshers' Miners Card -->
+          <div class="prize-card prize-card-student">
+            <span class="prize-top-badge">🥇 Freshers' Champions</span>
+            
+            <div class="prize-icon-wrap">
+              <svg viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+                <path d="M30 40 L50 25 L70 40 L62 70 L38 70 Z" fill="#E5A93C" stroke="#121212" stroke-width="3"/>
+                <text x="50" y="58" font-family="'Times New Roman', serif" font-style="italic" font-weight="900" font-size="28" fill="#121212" text-anchor="middle">μ</text>
+              </svg>
+            </div>
+
+            <h3 class="prize-title">Top 10 Karma Miners</h3>
+            <p class="prize-desc">Awarded to the top freshers who mine the highest verified Karma points during the 12-day marathon.</p>
+
+            <ul class="prize-perks-list">
+              <li>🏆 μLearn PRC Champion Trophy & Badge</li>
+              <li>💰 ₹15,000 Cash & Prize Pool</li>
+              <li>👕 Limited Edition μLearn Hoodie & Swag Kit</li>
+              <li>🚀 Priority Access to Advanced Project Guilds</li>
+            </ul>
+          </div>
+
+          <!-- Volunteer Mentors Recognition Card -->
+          <div class="prize-card prize-card-volunteer">
+            <span class="prize-top-badge">🌟 Mentor Champions</span>
+
+            <div class="prize-icon-wrap">
+              <svg viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="46" fill="#FFFDF8" stroke="#121212" stroke-width="6"/>
+                <path d="M50 20 L60 38 L80 40 L65 54 L70 74 L50 63 L30 74 L35 54 L20 40 L40 38 Z" fill="#F3B33D" stroke="#121212" stroke-width="3"/>
+              </svg>
+            </div>
+
+            <h3 class="prize-title">Volunteer Mentors</h3>
+            <p class="prize-desc">Dedicated senior volunteers who guide freshers' squads to victory and maintain 80%+ squad completion.</p>
+
+            <ul class="prize-perks-list">
+              <li>📜 Official Mentor Certificate of Leadership</li>
+              <li>🧢 Exclusive μLearn PRC Volunteer Apparel</li>
+              <li>⭐ Hall of Fame Feature on μLearn Portal</li>
+              <li>💼 Direct Industry Mentorship & Networking</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- All Qualifiers Guaranteed Banner -->
+        <div class="all-qualifiers-banner">
+          <div>
+            <h4>🎁 All 3,000+ Karma Qualifiers Get:</h4>
+            <p style="color:var(--gray-muted); font-size:0.98rem;">Verified Digital Certificate + μLearn Neobrutalist Sticker Pack + Entry to Level-2 Cohorts.</p>
+          </div>
+          <a href="#register" class="btn-chunky-primary">Claim My Spot →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. REGISTRATION FORM (POSTER CARD)
+         ============================================================ -->
+    <section class="register-section" id="register">
+      <div class="form-poster-card">
+        
+        <div class="form-header">
+          <span class="form-badge">⚡ Registration Open</span>
+          <h2>Register For Karma Marathon</h2>
+          <p>Fill out your details below to join your freshers' squad and start mining!</p>
+        </div>
+
+        <!-- Duplicate Registration Alert Banner -->
+        <div class="duplicate-alert-banner" id="duplicate-alert-banner">
+          <div>
+            <strong style="font-family:var(--font-heading); font-size:0.95rem;">You are already registered!</strong>
+            <p style="font-size:0.85rem; color:#78350F;">We found your existing admission ticket in local session storage.</p>
+          </div>
+          <button type="button" class="btn-view-ticket" id="btn-reopen-ticket">View Ticket 🎟️</button>
+        </div>
+
+        <form id="karma-registration-form" novalidate>
+          <div class="form-grid">
+            
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="reg-fullname" class="form-label">Full Name <span class="req">*</span></label>
+              <input type="text" id="reg-fullname" name="fullname" class="form-input" placeholder="e.g. Adithyan S" required>
+              <span class="field-error-msg" id="err-fullname">Please enter your full name.</span>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group">
+              <label for="reg-email" class="form-label">Email Address <span class="req">*</span></label>
+              <input type="email" id="reg-email" name="email" class="form-input" placeholder="student@college.edu" required>
+              <span class="field-error-msg" id="err-email">Please enter a valid email address.</span>
+            </div>
+
+            <!-- WhatsApp Phone -->
+            <div class="form-group">
+              <label for="reg-phone" class="form-label">WhatsApp Number <span class="req">*</span></label>
+              <input type="tel" id="reg-phone" name="phone" class="form-input" placeholder="10-digit mobile number" required>
+              <span class="field-error-msg" id="err-phone">Please enter a valid 10-digit mobile number.</span>
+            </div>
+
+            <!-- College Name -->
+            <div class="form-group">
+              <label for="reg-college" class="form-label">College / Institute <span class="req">*</span></label>
+              <input type="text" id="reg-college" name="college" class="form-input" placeholder="e.g. College of Engineering Trivandrum" required>
+              <span class="field-error-msg" id="err-college">Please enter your college name.</span>
+            </div>
+
+            <!-- Branch / Department -->
+            <div class="form-group form-col-full">
+              <label for="reg-branch" class="form-label">Branch / Specialization <span class="req">*</span></label>
+              <select id="reg-branch" name="branch" class="form-select" required>
+                <option value="">-- Select Your Branch --</option>
+                <option value="Computer Science & Engineering">Computer Science & Engineering (CSE)</option>
+                <option value="Artificial Intelligence & Data Science">AI & Data Science / Machine Learning</option>
+                <option value="Electronics & Communication">Electronics & Communication (ECE)</option>
+                <option value="Electrical & Electronics">Electrical & Electronics (EEE)</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Information Technology">Information Technology (IT)</option>
+                <option value="Other Degree / Science Stream">Other Engineering / Science Stream</option>
+              </select>
+              <span class="field-error-msg" id="err-branch">Please select your branch.</span>
+            </div>
+
+            <!-- μLearn Member Radio Toggle -->
+            <div class="form-group form-col-full">
+              <div class="member-toggle-wrap">
+                <label class="form-label">Are you already registered on μLearn? <span class="req">*</span></label>
+                
+                <div class="member-toggle-options">
+                  <label class="pill-radio-label">
+                    <input type="radio" name="is_member" value="yes" checked>
+                    <div class="pill-radio-custom">
+                      <span>✓ Yes, I have a μLearn ID</span>
+                    </div>
+                  </label>
+                  
+                  <label class="pill-radio-label">
+                    <input type="radio" name="is_member" value="no">
+                    <div class="pill-radio-custom">
+                      <span>✕ No, I'm new to μLearn</span>
+                    </div>
+                  </label>
+                </div>
+
+                <!-- Conditional Panel: YES (Input μLearn ID) -->
+                <div class="conditional-panel show" id="panel-member-yes">
+                  <div style="margin-top:12px;">
+                    <label for="reg-mulearn-id" class="form-label">μLearn ID <span class="req">*</span></label>
+                    <input type="text" id="reg-mulearn-id" name="mulearn_id" class="form-input" placeholder="e.g. adithyan@mulearn" value="adithyan@mulearn">
+                    <span class="field-error-msg" id="err-mulearn-id">Please enter your μLearn ID.</span>
+                  </div>
+                </div>
+
+                <!-- Conditional Panel: NO (Show Registration Note) -->
+                <div class="conditional-panel" id="panel-member-no">
+                  <div class="note-join-mulearn">
+                    💡 <strong>Don't worry!</strong> You can register right now. Create your free account on the official portal at <a href="https://app.mulearn.org" target="_blank" rel="noopener">app.mulearn.org</a> to get your μLearn ID.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Checkbox Confirmation -->
+            <div class="form-group form-col-full">
+              <label class="checkbox-confirm-wrap">
+                <input type="checkbox" id="reg-confirm" name="confirm" required checked>
+                <span>I confirm that I am a 1st-year fresher and ready to sprint for 12 days! <span class="req">*</span></span>
+              </label>
+              <span class="field-error-msg" id="err-confirm">You must confirm your eligibility to proceed.</span>
+            </div>
+
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-submit-form" id="btn-submit-form">
+            <span>Launch My Squad Ticket 🚀</span>
+          </button>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. FAQ SECTION (RETRO ACCORDION)
+         ============================================================ -->
+    <section class="section-wrap section-cream-bg" id="faq">
+      <div class="content-container">
+        <span class="section-header-tag">05 / Support</span>
+        <h2 class="section-title">Freshers' FAQ</h2>
+        <p class="section-subtitle">Got questions? We've got clear answers for you.</p>
+
+        <div class="faq-accordion" id="faq-accordion">
+          
+          <div class="faq-item">
+            <button class="faq-trigger" type="button">
+              <span>Do I need any prior coding or tech knowledge?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Not at all! Karma Marathon is designed specifically for absolute beginners in their 1st year. We start with absolute basics like Git setup, HTML/CSS, and simple Python scripts.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" type="button">
+              <span>How are squads and volunteer mentors assigned?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Once you register, you will be grouped into a cohort of 5 freshers from your college or region and matched with a senior μLearn volunteer mentor on Discord who will guide you daily.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" type="button">
+              <span>What is Karma and how is it verified?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Karma represents verified proof-of-work points on the μLearn platform. When you complete a quest task, peer reviewers verify your repository or design submission and grant Karma directly to your μLearn ID.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" type="button">
+              <span>Is there any registration fee for Karma Marathon?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>No, Karma Marathon is 100% free of cost! It is a student-community initiative powered by μLearn PRC to empower freshers across engineering colleges.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" type="button">
+              <span>What happens if I miss a day during the 12-day sprint?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>You can catch up on tasks anytime! The quests remain open throughout the 12-day window (16–27 August 2026), allowing you to work at your own pace alongside your squad.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" type="button">
+              <span>Can senior students join as Volunteer Mentors?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Yes! 2nd, 3rd, and 4th-year senior students are welcome to register as squad mentors. Mentors earn official leadership certificates and exclusive volunteer apparel.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       9. SUCCESS MODAL & DIGITAL ADMISSION TICKET
+       ============================================================ -->
+  <div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true" aria-label="Registration Success Ticket">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">&times;</button>
+      
+      <!-- 3D Coin Pop Animation -->
+      <div class="success-coin-wrapper">
+        <svg class="success-flipping-coin" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" fill="#F3B33D" stroke="#121212" stroke-width="6"/>
+          <circle cx="50" cy="50" r="38" stroke="#121212" stroke-width="2" stroke-dasharray="4 4"/>
+          <circle cx="50" cy="50" r="32" fill="#E5A93C" stroke="#121212" stroke-width="3"/>
+          <text x="50" y="62" font-family="'Times New Roman', serif" font-style="italic" font-weight="900" font-size="44" fill="#121212" text-anchor="middle">μ</text>
+        </svg>
+      </div>
+
+      <div class="modal-badge-karma">+3000 KARMA UNLOCKED!</div>
+      <h3 class="modal-title">Registration Confirmed</h3>
+      <p style="color:var(--gray-muted); font-size:0.95rem;">Welcome aboard! Here is your official Karma Marathon Admission Ticket.</p>
+
+      <!-- Digital Ticket Card -->
+      <div class="digital-ticket-box">
+        <div class="ticket-row">
+          <span class="ticket-field">TICKET ID</span>
+          <span class="ticket-id-large" id="tkt-id">KM2026-8942</span>
+        </div>
+        <div style="margin: 12px 0; border-top:2px dashed var(--black);"></div>
+        <div class="ticket-row">
+          <span class="ticket-field">PARTICIPANT</span>
+          <span class="ticket-val" id="tkt-name">Adithyan S</span>
+        </div>
+        <div class="ticket-row">
+          <span class="ticket-field">COLLEGE</span>
+          <span class="ticket-val" id="tkt-college">College of Engineering</span>
+        </div>
+        <div class="ticket-row">
+          <span class="ticket-field">BRANCH</span>
+          <span class="ticket-val" id="tkt-branch">Computer Science</span>
+        </div>
+        <div class="ticket-row">
+          <span class="ticket-field">ASSIGNED SQUAD</span>
+          <span class="ticket-val" style="color:var(--bg-orange);" id="tkt-squad">Squad Alpha-09</span>
+        </div>
+        <div class="ticket-row">
+          <span class="ticket-field">SPRINT DATES</span>
+          <span class="ticket-val">16 – 27 August 2026</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <a href="https://whatsapp.com" id="btn-whatsapp-share" target="_blank" class="btn-ticket-whatsapp">
+          <span>Share Ticket on WhatsApp 📱</span>
+        </a>
+        <button type="button" class="btn-ticket-close" id="btn-modal-done">Done (Back to site)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       10. FOOTER SECTION
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <div class="brand-logo" style="margin-bottom:12px;">
+          <div class="logo-badge">
+            <span class="logo-mulearn"><span class="logo-mu">μ</span>learn</span>
+            <span class="logo-prc">PRC</span>
+          </div>
+        </div>
+        <p class="footer-brand-desc">
+          Karma Marathon is a premier freshers' skill-mining initiative powered by μLearn PRC. Building genuine proof-of-work culture across colleges.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links-list">
+          <li><a href="#about" class="footer-link">About Challenge</a></li>
+          <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
+          <li><a href="#rules" class="footer-link">Rules & Benchmark</a></li>
+          <li><a href="#prizes" class="footer-link">Prizes & Swag</a></li>
+          <li><a href="#register" class="footer-link">Squad Registration</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Community & Support</h4>
+        <ul class="footer-links-list">
+          <li><a href="https://app.mulearn.org" target="_blank" class="footer-link">μLearn Official Portal ↗</a></li>
+          <li><a href="https://discord.gg/mulearn" target="_blank" class="footer-link">Discord Community ↗</a></li>
+          <li><a href="#faq" class="footer-link">Freshers' FAQ</a></li>
+          <li><a href="mailto:support@mulearn.org" class="footer-link">Contact Organizers</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 μLearn PRC • All rights reserved. Crafted for freshers.</span>
+      <a href="#hero" class="back-to-top-btn">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       11. JAVASCRIPT APP ENGINE
+       ============================================================ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ------------------------------------------------------------
+         1. GAMING LOADER SCREEN ENGINE
+         ------------------------------------------------------------ */
+      const loadingScreen = document.getElementById('loading-screen');
+      const loaderBarFill = document.getElementById('loader-bar-fill');
+      const loaderStatusText = document.getElementById('loader-status-text');
+      const loaderSkipBtn = document.getElementById('loader-skip-btn');
+
+      const statusMessages = [
+        "⛏️ Digging for freshers' talent...",
+        "⚡ Calibrating μ-Coins & Karma Rigs...",
+        "👥 Matching 5-peer freshers' squads...",
+        "🚀 Launching Karma Marathon 2026..."
+      ];
+
+      let currentProgress = 0;
+      let statusIdx = 0;
+
+      const loaderInterval = setInterval(() => {
+        currentProgress += 12;
+        if (currentProgress > 100) currentProgress = 100;
+        
+        loaderBarFill.style.width = currentProgress + '%';
+
+        if (currentProgress % 25 === 0 && statusIdx < statusMessages.length - 1) {
+          statusIdx++;
+          loaderStatusText.textContent = statusMessages[statusIdx];
+        }
+
+        if (currentProgress >= 100) {
+          clearInterval(loaderInterval);
+          setTimeout(dismissLoader, 300);
+        }
+      }, 180);
+
+      function dismissLoader() {
+        loadingScreen.classList.add('hidden');
+      }
+
+      loaderSkipBtn.addEventListener('click', () => {
+        clearInterval(loaderInterval);
+        dismissLoader();
+      });
+
+      /* ------------------------------------------------------------
+         2. STICKY NAV & MOBILE MENU SHEET
+         ------------------------------------------------------------ */
+      const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
+      const mobileNavSheet = document.getElementById('mobile-nav-sheet');
+
+      mobileToggleBtn.addEventListener('click', () => {
+        const isOpen = mobileNavSheet.classList.contains('open');
+        if (isOpen) {
+          mobileNavSheet.classList.remove('open');
+          mobileToggleBtn.classList.remove('open');
+          mobileToggleBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          mobileNavSheet.classList.add('open');
+          mobileToggleBtn.classList.add('open');
+          mobileToggleBtn.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Close mobile sheet on link click
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNavSheet.classList.remove('open');
+          mobileToggleBtn.classList.remove('open');
+          mobileToggleBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* ------------------------------------------------------------
+         3. SMART 3-PHASE COUNTDOWN TIMER & PREVIEW TESTER
+         ------------------------------------------------------------ */
+      const timeDays = document.getElementById('time-days');
+      const timeHours = document.getElementById('time-hours');
+      const timeMinutes = document.getElementById('time-minutes');
+      const timeSeconds = document.getElementById('time-seconds');
+      const countdownStatusBadge = document.getElementById('countdown-status-badge');
+      const countdownHeadingText = document.getElementById('countdown-heading-text');
+      const countdownPreviewToggle = document.getElementById('countdown-preview-toggle');
+
+      // Target event date: August 16, 2026 09:00:00
+      const marathonStartDate = new Date('2026-08-16T09:00:00+05:30').getTime();
+      const marathonEndDate = new Date('2026-08-27T23:59:59+05:30').getTime();
+
+      let demoPhaseState = 0; // 0 = Auto/Real, 1 = Forced Live, 2 = Forced Ended
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+
+        if (demoPhaseState === 1) {
+          // Preview Live State
+          countdownStatusBadge.className = 'countdown-status-indicator status-live';
+          countdownStatusBadge.textContent = 'Phase: Event Live Now! 🔥';
+          countdownHeadingText.textContent = 'Marathon Ends In:';
+          timeDays.textContent = '08';
+          timeHours.textContent = '14';
+          timeMinutes.textContent = '32';
+          timeSeconds.textContent = Math.floor(Math.random() * 60).toString().padStart(2, '0');
+          return;
+        }
+
+        if (demoPhaseState === 2) {
+          // Preview Ended State
+          countdownStatusBadge.className = 'countdown-status-indicator status-post';
+          countdownStatusBadge.textContent = 'Phase: Event Ended 🎉';
+          countdownHeadingText.textContent = 'Marathon Completed!';
+          timeDays.textContent = '00';
+          timeHours.textContent = '00';
+          timeMinutes.textContent = '00';
+          timeSeconds.textContent = '00';
+          return;
+        }
+
+        // Real Dynamic Calculation
+        if (now < marathonStartDate) {
+          // Pre-Event
+          countdownStatusBadge.className = 'countdown-status-indicator status-pre';
+          countdownStatusBadge.textContent = 'Phase: Pre-Event';
+          countdownHeadingText.textContent = 'Marathon Starts In:';
+          const distance = marathonStartDate - now;
+          timeDays.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+          timeHours.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+          timeMinutes.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+          timeSeconds.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        } else if (now >= marathonStartDate && now <= marathonEndDate) {
+          // Live Event
+          countdownStatusBadge.className = 'countdown-status-indicator status-live';
+          countdownStatusBadge.textContent = 'Phase: Event Live Now! 🔥';
+          countdownHeadingText.textContent = 'Marathon Ends In:';
+          const distance = marathonEndDate - now;
+          timeDays.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+          timeHours.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+          timeMinutes.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+          timeSeconds.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        } else {
+          // Post Event
+          countdownStatusBadge.className = 'countdown-status-indicator status-post';
+          countdownStatusBadge.textContent = 'Phase: Event Ended 🎉';
+          countdownHeadingText.textContent = 'Marathon Completed!';
+          timeDays.textContent = '00';
+          timeHours.textContent = '00';
+          timeMinutes.textContent = '00';
+          timeSeconds.textContent = '00';
+        }
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // Demo Phase Switcher Button
+      countdownPreviewToggle.addEventListener('click', () => {
+        demoPhaseState = (demoPhaseState + 1) % 3;
+        updateCountdown();
+      });
+
+      /* ------------------------------------------------------------
+         4. INTERACTIVE TRACK EXPLORER DATA & SWITCHER
+         ------------------------------------------------------------ */
+      const trackData = {
+        web: [
+          { title: "🌐 Build a Personal Portfolio HTML Page", karma: "+250 Karma" },
+          { title: "🎨 Style a Neobrutalist Product Card", karma: "+150 Karma" },
+          { title: "🚀 Deploy Website on GitHub Pages / Vercel", karma: "+200 Karma" },
+          { title: "⚡ Create Responsive Mobile Navigation", karma: "+200 Karma" }
+        ],
+        python: [
+          { title: "🐍 Write Python CLI Karma Calculator", karma: "+200 Karma" },
+          { title: "🤖 Simple Chatbot using Gemini API", karma: "+500 Karma" },
+          { title: "📊 Data Analysis of Student Marks with Pandas", karma: "+300 Karma" },
+          { title: "📁 File System Directory Organizer Script", karma: "+150 Karma" }
+        ],
+        git: [
+          { title: "🐙 Git Basics: Init, Commit, Branch & Push", karma: "+100 Karma" },
+          { title: "🔀 Create & Merge your First Pull Request", karma: "+200 Karma" },
+          { title: "📝 Write Professional README.md Documentation", karma: "+150 Karma" },
+          { title: "⚡ Open Source Issue Triaging", karma: "+250 Karma" }
+        ],
+        design: [
+          { title: "🎨 Design Neobrutalist App Screen in Figma", karma: "+300 Karma" },
+          { title: "🖼️ Create Custom Brand Icon Set", karma: "+200 Karma" },
+          { title: "📐 Prototype Interactive Mobile App Flow", karma: "+400 Karma" },
+          { title: "✨ Color Palette & Typography Guidelines Document", karma: "+150 Karma" }
+        ],
+        cyber: [
+          { title: "🐧 Essential Linux Terminal Commands Quest", karma: "+150 Karma" },
+          { title: "🔐 SSH Key Generation & GitHub Auth Setup", karma: "+200 Karma" },
+          { title: "🛡️ Basic Web Security & Header Inspection", karma: "+300 Karma" },
+          { title: "⚙️ Write Bash Automation Script", karma: "+250 Karma" }
+        ]
+      };
+
+      const trackTabsContainer = document.getElementById('track-tabs-container');
+      const trackTasksList = document.getElementById('track-tasks-list');
+
+      function renderTrackTasks(trackKey) {
+        const tasks = trackData[trackKey] || trackData.web;
+        trackTasksList.innerHTML = tasks.map(t => `
+          <div class="task-item">
+            <span class="task-title">${t.title}</span>
+            <span class="karma-reward-pill">${t.karma}</span>
+          </div>
+        `).join('');
+      }
+
+      trackTabsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('track-tab-btn')) {
+          document.querySelectorAll('.track-tab-btn').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+          renderTrackTasks(e.target.dataset.track);
+        }
+      });
+
+      renderTrackTasks('web');
+
+      /* ------------------------------------------------------------
+         5. FORM CONDITIONAL PANELS & REAL-TIME VALIDATION
+         ------------------------------------------------------------ */
+      const form = document.getElementById('karma-registration-form');
+      const radioMembers = document.getElementsByName('is_member');
+      const panelYes = document.getElementById('panel-member-yes');
+      const panelNo = document.getElementById('panel-member-no');
+      const inputMulearnId = document.getElementById('reg-mulearn-id');
+
+      radioMembers.forEach(radio => {
+        radio.addEventListener('change', () => {
+          if (radio.value === 'yes' && radio.checked) {
+            panelYes.classList.add('show');
+            panelNo.classList.remove('show');
+            inputMulearnId.setAttribute('required', 'true');
+          } else {
+            panelYes.classList.remove('show');
+            panelNo.classList.add('show');
+            inputMulearnId.removeAttribute('required');
+          }
+        });
+      });
+
+      // Check LocalStorage for Duplicate Registration
+      const duplicateAlertBanner = document.getElementById('duplicate-alert-banner');
+      const btnReopenTicket = document.getElementById('btn-reopen-ticket');
+      const savedTicket = localStorage.getItem('karma_marathon_ticket');
+
+      if (savedTicket) {
+        duplicateAlertBanner.classList.add('show');
+      }
+
+      btnReopenTicket.addEventListener('click', () => {
+        if (savedTicket) {
+          const ticketData = JSON.parse(savedTicket);
+          displaySuccessModal(ticketData);
+        }
+      });
+
+      // Form Submit Handler
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        let isValid = true;
+
+        // Reset errors
+        document.querySelectorAll('.form-input, .form-select').forEach(el => el.classList.remove('is-invalid'));
+        document.querySelectorAll('.field-error-msg').forEach(msg => msg.classList.remove('visible'));
+
+        // Validate Fullname
+        const fullname = document.getElementById('reg-fullname');
+        if (!fullname.value.trim()) {
+          fullname.classList.add('is-invalid');
+          document.getElementById('err-fullname').classList.add('visible');
+          isValid = false;
+        }
+
+        // Validate Email
+        const email = document.getElementById('reg-email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
+          email.classList.add('is-invalid');
+          document.getElementById('err-email').classList.add('visible');
+          isValid = false;
+        }
+
+        // Validate Phone
+        const phone = document.getElementById('reg-phone');
+        if (!phone.value.trim() || phone.value.trim().length < 10) {
+          phone.classList.add('is-invalid');
+          document.getElementById('err-phone').classList.add('visible');
+          isValid = false;
+        }
+
+        // Validate College
+        const college = document.getElementById('reg-college');
+        if (!college.value.trim()) {
+          college.classList.add('is-invalid');
+          document.getElementById('err-college').classList.add('visible');
+          isValid = false;
+        }
+
+        // Validate Branch
+        const branch = document.getElementById('reg-branch');
+        if (!branch.value) {
+          branch.classList.add('is-invalid');
+          document.getElementById('err-branch').classList.add('visible');
+          isValid = false;
+        }
+
+        // Validate μLearn ID if member=yes
+        const isMemberYes = document.querySelector('input[name="is_member"]:checked').value === 'yes';
+        if (isMemberYes && !inputMulearnId.value.trim()) {
+          inputMulearnId.classList.add('is-invalid');
+          document.getElementById('err-mulearn-id').classList.add('visible');
+          isValid = false;
+        }
+
+        // Validate Checkbox
+        const confirmCheck = document.getElementById('reg-confirm');
+        if (!confirmCheck.checked) {
+          document.getElementById('err-confirm').classList.add('visible');
+          isValid = false;
+        }
+
+        if (isValid) {
+          const ticketID = 'KM2026-' + Math.floor(1000 + Math.random() * 9000);
+          const squadNum = Math.floor(1 + Math.random() * 20);
+          
+          const ticketObj = {
+            id: ticketID,
+            name: fullname.value.trim(),
+            email: email.value.trim(),
+            college: college.value.trim(),
+            branch: branch.value,
+            squad: `Squad Alpha-${squadNum.toString().padStart(2, '0')}`
+          };
+
+          // Save to LocalStorage
+          localStorage.setItem('karma_marathon_ticket', JSON.stringify(ticketObj));
+          duplicateAlertBanner.classList.add('show');
+
+          // Trigger Confetti & Open Ticket Modal
+          triggerConfetti();
+          displaySuccessModal(ticketObj);
+        }
+      });
+
+      /* ------------------------------------------------------------
+         6. SUCCESS MODAL & DIGITAL TICKET DISPLAY
+         ------------------------------------------------------------ */
+      const successModal = document.getElementById('success-modal');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      const btnModalDone = document.getElementById('btn-modal-done');
+
+      function displaySuccessModal(data) {
+        document.getElementById('tkt-id').textContent = data.id;
+        document.getElementById('tkt-name').textContent = data.name;
+        document.getElementById('tkt-college').textContent = data.college;
+        document.getElementById('tkt-branch').textContent = data.branch;
+        document.getElementById('tkt-squad').textContent = data.squad;
+
+        // WhatsApp share URL
+        const waText = encodeURIComponent(`🚀 I've registered for Karma Marathon 2026 by μLearn PRC! Ticket ID: ${data.id}. Assigned to ${data.squad}. Let's mine our skills together!`);
+        document.getElementById('btn-whatsapp-share').href = `https://api.whatsapp.com/send?text=${waText}`;
+
+        successModal.classList.add('open');
+      }
+
+      function closeModal() {
+        successModal.classList.remove('open');
+      }
+
+      modalCloseBtn.addEventListener('click', closeModal);
+      btnModalDone.addEventListener('click', closeModal);
+      successModal.addEventListener('click', (e) => {
+        if (e.target === successModal) closeModal();
+      });
+
+      /* ------------------------------------------------------------
+         7. CANVAS CONFETTI CELEBRATION SYSTEM
+         ------------------------------------------------------------ */
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let animationFrame;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      function triggerConfetti() {
+        particles = [];
+        const colors = ['#E8622C', '#F3B33D', '#148882', '#E11D48', '#121212', '#FFFDF8'];
+        
+        for (let i = 0; i < 120; i++) {
+          particles.push({
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            vx: (Math.random() - 0.5) * 18,
+            vy: (Math.random() - 0.8) * 18,
+            size: Math.random() * 10 + 6,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            vRotation: (Math.random() - 0.5) * 10,
+            opacity: 1
+          });
+        }
+
+        cancelAnimationFrame(animationFrame);
+        animateConfetti();
+      }
+
+      function animateConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((p, index) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.35; // Gravity
+          p.rotation += p.vRotation;
+          p.opacity -= 0.008;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.globalAlpha = Math.max(p.opacity, 0);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+
+          if (p.opacity <= 0 || p.y > canvas.height) {
+            particles.splice(index, 1);
+          }
+        });
+
+        if (particles.length > 0) {
+          animationFrame = requestAnimationFrame(animateConfetti);
+        }
+      }
+
+      /* ------------------------------------------------------------
+         8. RETRO FAQ ACCORDION
+         ------------------------------------------------------------ */
+      const faqAccordion = document.getElementById('faq-accordion');
+
+      faqAccordion.addEventListener('click', (e) => {
+        const trigger = e.target.closest('.faq-trigger');
+        if (!trigger) return;
+
+        const item = trigger.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+
+        // Close all items
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>
